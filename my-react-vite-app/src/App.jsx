@@ -4,10 +4,15 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 
-import { Router, Route, Link, useNavigate } from 'react-router-dom'
+import { Router, Route, Link, useNavigate } from 'react-router-dom';
 
 
 function App() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [emailError, setEmailError] = useState('')
+  const [passwordError, setPasswordError] = useState('')
+
   const [count, setCount] = useState(0)
 
   return (
@@ -23,8 +28,25 @@ function App() {
       <h1>Chewy Beauty and Spa</h1>
       <div className='login'>
         <h2> Returning User?</h2>
-        <button>Log in</button>
+        Log in
       </ div>
+
+      <div className={'inputContainer'}>
+        <input 
+          value={email}
+          placeholder="Enter your email address here"
+          onChange={(e) => setEmail( e.target.value)}
+        />
+        <label className="error-message">{emailError}</label>
+      </div>
+      <div className={'inputContainer'}>
+        <input 
+          value={password}
+          placeholder="Enter password"
+          onChange={(e) => setPassword( e.target.value)}
+        />
+        <label className="error-message">{passwordError}</label>
+      </div>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           click me {count}
